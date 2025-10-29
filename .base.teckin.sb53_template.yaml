@@ -491,6 +491,58 @@ light:
                 transition_length: 1000ms
             - delay: 2000ms
       - automation:
+          name: Halloween2
+          sequence:
+            - light.turn_on: # orange
+                id: rgbct_light
+                brightness: 80%
+                red: 100%
+                green: 60%
+                blue: 8%
+                white: 0%
+                transition_length: 2000ms
+            - delay: 4000ms
+            - light.turn_on: # deep purple
+                id: rgbct_light
+                brightness: 65%
+                red: 85%
+                green: 40%
+                blue: 100%
+                white: 0%
+                transition_length: 2000ms
+            - delay: 4000ms
+            - light.turn_on: # black (off)
+                id: rgbct_light
+                brightness: 0%
+                red: 100%
+                green: 60%
+                blue: 8%
+                white: 0%
+                transition_length: 1000ms
+            - delay: 1500ms
+      - automation:
+          name: Halloween3
+          sequence:
+            - light.turn_on: # orange
+                id: rgbct_light
+                brightness: 80%
+                red: 100%
+                green: 60%
+                blue: 8%
+                white: 0%
+                transition_length: 2000ms
+            - delay: 3300ms
+            - light.turn_on: # deep purple
+                id: rgbct_light
+                brightness: 65%
+                red: 85%
+                green: 40%
+                blue: 100%
+                white: 0%
+                transition_length: 2000ms
+            - delay: 3300ms
+            
+      - automation:
           name: Christmas
           sequence:
             - light.turn_on: # red

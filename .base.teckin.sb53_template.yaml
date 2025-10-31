@@ -283,33 +283,104 @@ light:
             call.set_publish(false);
             call.set_save(false);
             call.perform();
+      - automation:
+          name: Spooky
+          sequence:
+            - light.turn_on:   # initial turn off
+                id: rgbct_light
+                transition_length: 700ms
+                brightness: 0%
+                color_mode: COLD_WARM_WHITE
+            - delay: 1500ms
+            - light.turn_on:  # first jolt
+                id: rgbct_light
+                brightness: 80%
+                red: 0%
+                green: 0%
+                blue: 0%
+                cold_white: 100%
+                warm_white: 0%
+                transition_length: 0ms
+                color_mode: COLD_WARM_WHITE
+            - delay: 60ms
+            - light.turn_on:  # jolt off
+                id: rgbct_light
+                transition_length: 0ms
+                brightness: 0%
+                color_mode: COLD_WARM_WHITE
+            - delay: 120ms
+            - light.turn_on:  # second jolt
+                id: rgbct_light
+                brightness: 90%
+                red: 0%
+                green: 0%
+                blue: 0%
+                cold_white: 100%
+                warm_white: 0%
+                transition_length: 0ms
+                color_mode: COLD_WARM_WHITE
+            - delay: 180ms
+            - light.turn_on:  # jolt off
+                id: rgbct_light
+                transition_length: 0ms
+                brightness: 0%
+                color_mode: COLD_WARM_WHITE
+            - delay: 130ms
+            - light.turn_on:  # third jolt
+                id: rgbct_light
+                brightness: 80%
+                red: 0%
+                green: 0%
+                blue: 0%
+                cold_white: 100%
+                warm_white: 0%
+                transition_length: 0ms
+                color_mode: COLD_WARM_WHITE
+            - delay: 700ms
+            - light.turn_on:  # jolt off
+                id: rgbct_light
+                transition_length: 700ms
+                brightness: 0%
+                color_mode: COLD_WARM_WHITE
+            - delay: 1400ms
+            - light.turn_on:
+                id: rgbct_light
+                color_mode: COLD_WARM_WHITE
+                cold_white: 0%
+                warm_white: 100%
+                transition_length: 1200ms
+                brightness: 65%
+            - delay: 1h
       - strobe:
           name: Lightning
           colors:
             - state: True
               brightness: 100%
-              red: 90%
-              green: 90%
-              blue: 100%
-              white: 0%
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 100%
+              warm_white: 0%
               duration: 50ms
             - state: False
               duration: 50ms
             - state: True
               brightness: 100%
-              red: 90%
-              green: 90%
-              blue: 100%
-              white: 0%
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 100%
+              warm_white: 0%
               duration: 160ms
             - state: False
               duration: 50ms
             - state: True
               brightness: 100%
-              red: 90%
-              green: 90%
-              blue: 100%
-              white: 0%
+              red: 0%
+              green: 0%
+              blue: 0%
+              cold_white: 100%
+              warm_white: 0%
               duration: 50ms
             - state: False
               duration: 3000ms
@@ -448,6 +519,7 @@ light:
                 blue: 8%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # deep purple
                 id: rgbct_light
@@ -457,6 +529,7 @@ light:
                 blue: 100%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # green
                 id: rgbct_light
@@ -466,16 +539,8 @@ light:
                 blue: 0%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
-            - light.turn_on: # black (off)
-                id: rgbct_light
-                brightness: 0%
-                red: 0%
-                green: 0%
-                blue: 0%
-                white: 0%
-                transition_length: 1000ms
-            - delay: 2000ms
       - automation:
           name: Halloween2
           sequence:
@@ -487,7 +552,8 @@ light:
                 blue: 8%
                 white: 0%
                 transition_length: 2000ms
-            - delay: 4000ms
+                color_mode: RGB
+            - delay: 3300ms
             - light.turn_on: # deep purple
                 id: rgbct_light
                 brightness: 65%
@@ -496,16 +562,8 @@ light:
                 blue: 100%
                 white: 0%
                 transition_length: 2000ms
-            - delay: 4000ms
-            - light.turn_on: # black (off)
-                id: rgbct_light
-                brightness: 0%
-                red: 100%
-                green: 60%
-                blue: 8%
-                white: 0%
-                transition_length: 1000ms
-            - delay: 1500ms
+                color_mode: RGB
+            - delay: 3300ms
       - automation:
           name: Halloween3
           sequence:
@@ -517,7 +575,8 @@ light:
                 blue: 8%
                 white: 0%
                 transition_length: 2000ms
-            - delay: 3300ms
+                color_mode: RGB
+            - delay: 4000ms
             - light.turn_on: # deep purple
                 id: rgbct_light
                 brightness: 65%
@@ -526,7 +585,61 @@ light:
                 blue: 100%
                 white: 0%
                 transition_length: 2000ms
-            - delay: 3300ms
+                color_mode: RGB
+            - delay: 4000ms
+            - light.turn_on: # black (off)
+                id: rgbct_light
+                brightness: 0%
+                red: 100%
+                green: 60%
+                blue: 8%
+                white: 0%
+                transition_length: 1000ms
+                color_mode: RGB
+            - delay: 1500ms
+      - automation:
+          name: Halloween4
+          sequence:
+            - light.turn_on: # orange
+                id: rgbct_light
+                brightness: 80%
+                red: 100%
+                green: 60%
+                blue: 8%
+                white: 0%
+                transition_length: 2000ms
+                color_mode: RGB
+            - delay: 4000ms
+            - light.turn_on: # deep purple
+                id: rgbct_light
+                brightness: 65%
+                red: 85%
+                green: 40%
+                blue: 100%
+                white: 0%
+                transition_length: 2000ms
+                color_mode: RGB
+            - delay: 4000ms
+            - light.turn_on: # green
+                id: rgbct_light
+                brightness: 80%
+                red: 20%
+                green: 100%
+                blue: 0%
+                white: 0%
+                transition_length: 2000ms
+                color_mode: RGB
+            - delay: 4000ms
+            - light.turn_on: # black (off)
+                id: rgbct_light
+                brightness: 0%
+                red: 0%
+                green: 0%
+                blue: 0%
+                white: 0%
+                transition_length: 1000ms
+                color_mode: RGB
+            - delay: 2000ms
             
       - automation:
           name: Christmas
@@ -539,6 +652,7 @@ light:
                 blue: 0%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # green
                 id: rgbct_light
@@ -548,6 +662,7 @@ light:
                 blue: 0%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # white
                 id: rgbct_light
@@ -557,6 +672,7 @@ light:
                 blue: 0%
                 white: 100%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
 
       - automation:
@@ -570,6 +686,7 @@ light:
                 blue: 100%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # white
                 id: rgbct_light
@@ -579,6 +696,7 @@ light:
                 blue: 0%
                 white: 100%
                 transition_length: 2000ms
+                color_mode: RGB
 
       - automation:
           name: Canada Day
@@ -591,6 +709,7 @@ light:
                 blue: 0%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # white
                 id: rgbct_light
@@ -600,6 +719,7 @@ light:
                 blue: 0%
                 white: 100%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
 
       - automation:
@@ -613,6 +733,7 @@ light:
                 blue: 75%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # deep red
                 id: rgbct_light
@@ -622,6 +743,7 @@ light:
                 blue: 20%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
             - light.turn_on: # magenta
                 id: rgbct_light
@@ -631,6 +753,7 @@ light:
                 blue: 100%
                 white: 0%
                 transition_length: 2000ms
+                color_mode: RGB
             - delay: 4000ms
 
       - automation:
@@ -639,31 +762,25 @@ light:
             - light.turn_on:
                 id: rgbct_light
                 brightness: 60%
-                red: 0%
-                green: 0%
-                blue: 0%
-                white: 70%
-                color_temperature: ${min_kelvin}
+                color_mode: COLD_WARM_WHITE
+                cold_white: 0%
+                warm_white: 100%
                 transition_length: 300ms
             - delay: 500ms
             - light.turn_on:
                 id: rgbct_light
                 brightness: 55%
-                red: 0%
-                green: 0%
-                blue: 0%
-                white: 60%
-                color_temperature: 3300K
+                color_mode: COLD_WARM_WHITE
+                cold_white: 20%
+                warm_white: 80%
                 transition_length: 300ms
             - delay: 700ms
             - light.turn_on:
                 id: rgbct_light
                 brightness: 65%
-                red: 0%
-                green: 0%
-                blue: 0%
-                white: 80%
-                color_temperature: 3000K
+                color_mode: COLD_WARM_WHITE
+                cold_white: 0%
+                warm_white: 100%
                 transition_length: 400ms
             - delay: 600ms
 

@@ -288,10 +288,10 @@ light:
           sequence:
             - light.turn_on:   # initial turn off
                 id: rgbct_light
-                transition_length: 700ms
+                transition_length: 800ms
                 brightness: 0%
                 color_mode: COLD_WARM_WHITE
-            - delay: 1500ms
+            - delay: 1900ms
             - light.turn_on:  # first jolt
                 id: rgbct_light
                 brightness: 80%

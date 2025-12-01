@@ -2,6 +2,7 @@ substitutions:
   dumb_mode_brightness: "35%"
   min_kelvin: "2700K"
   max_kelvin: "6500K"
+  boot_connectivity_test_wait_time: "15s"
 
 esphome:
   name: ${name}
@@ -51,7 +52,7 @@ script:
     mode: single
     then:
       - logger.log: "=== Boot-time connectivity check starting (script mode) ==="
-      - delay: 12s
+      - delay: ${boot_connectivity_test_wait_time}
 
       - if:
           condition:
@@ -63,7 +64,7 @@ script:
                   not:
                     - wifi.connected:
                 then:
-                  - logger.log: "WiFi failed after 12s → engaging Dumb Mode"
+                  - logger.log: "WiFi failed after ${boot_connectivity_test_wait_time} → engaging Dumb Mode"
                   - light.turn_on:
                       id: rgbct_light
                       brightness: ${dumb_mode_brightness}
@@ -94,7 +95,7 @@ script:
                                   color_temperature: ${min_kelvin}
                                   transition_length: 1s
                       else:
-                        - logger.log: "Full connectivity before 12s → normal operation."
+                        - logger.log: "Full connectivity before ${boot_connectivity_test_wait_time} → normal operation."
 
 output:
   - platform: esp8266_pwm

@@ -10,7 +10,7 @@ esphome:
   min_version: 2025.9.0
   name_add_mac_suffix: false
   project:
-    name: teckin.sb53
+    name: Teckin.SB53
     version: '1.1'
   on_boot:
     priority: -10  # run after core init but before normal operation
